@@ -1,5 +1,6 @@
 <template>
-    <div :style="{width: '950px'}">
+    <div class="swiper-container">
+        <button class="close-button" @click="handlePlay">{{ isPlay ? '종료' : '시작' }}</button>
         <swiper
             :modules="[Navigation, Pagination, Scrollbar, A11y, Autoplay]"
             :spaceBetween="50"
@@ -14,9 +15,6 @@
                 <img :src="`https://picsum.photos/950/250?random=${index + 1}`" alt="Swiper 이미지" />
             </swiper-slide>
         </swiper>
-    </div>
-    <div class="btnWrap">
-        <button @click="handlePlay">{{ isPlay ? '종료' : '시작' }}</button>
     </div>
 </template>
 
@@ -46,10 +44,5 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/module
 </script>
 
 <style scoped>
-.btnWrap {
-    position: absolute;
-    top: 250px;
-    z-index: 1;
-    left: 530px;
-}
+    @import "../assets/css/swiper.css"
 </style>
