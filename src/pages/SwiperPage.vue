@@ -1,6 +1,6 @@
 <template>
-    <div class="swiper-container">
-        <button class="close-button" @click="handlePlay">{{ isPlay ? '종료' : '시작' }}</button>
+    <div>
+        <button ref="closeButtonRef" @click="handlePlay">{{ isPlay ? '종료' : '시작' }}</button>
         <swiper
             :modules="[Navigation, Pagination, Scrollbar, A11y, Autoplay]"
             :spaceBetween="50"
@@ -24,7 +24,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import 'swiper/css/virtual';
-import { ref } from 'vue';
+import { ref, onMounted, watch } from 'vue';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/modules';
 
@@ -32,6 +32,7 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/module
 
     const mySwiper = ref(null);
     const isPlay = ref(true);
+    const closeButtonRef = ref(null);
 
     const onSwiper = (swiper) => {
         mySwiper.value = swiper;
@@ -41,8 +42,24 @@ import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper/module
         isPlay.value ? mySwiper.value.autoplay.stop() : mySwiper.value.autoplay.start();
         isPlay.value = !isPlay.value;
     };
+
+    onMounted(() => {
+        const pagination = document.querySelector('.swiper-pagination');
+        if (pagination && closeButtonRef.value) {
+            pagination.appendChild(closeButtonRef.value);  
+        }
+    });
+
+    watch(isPlay, (newVal) => {
+        if (newVal) {
+            const pagination = document.querySelector('.swiper-pagination'); 
+            if (pagination && closeButtonRef.value) {
+                pagination.appendChild(closeButtonRef.value);  
+            }
+        }
+    });
 </script>
 
 <style scoped>
-    @import "../assets/css/swiper.css"
+    
 </style>
