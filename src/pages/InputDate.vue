@@ -63,12 +63,12 @@ import { ref } from "vue";
     const startDate = ref(Convert.getDateToStringFormat(new Date(today.setDate(today.getDate() - 7)), 'YYYY-MM-DD'));
     const endDate = ref(Convert.getDateToStringFormat(new Date(), 'YYYY-MM-DD'));
 
-    const handleStartDateChange = (event) => {
-        startDate.value = event.target.value;
+    const handleStartDateChange = (e) => {
+        startDate.value = e.target.value;
     };
 
-    const handleEndDateChange = (event) => {
-        endDate.value = event.target.value;
+    const handleEndDateChange = (e) => {
+        endDate.value = e.target.value;
     };
 
     const startDatePickerRef = ref(null);
