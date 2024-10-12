@@ -6,6 +6,7 @@ import Calendar from "../pages/Calendar.vue";
 import Map from "../pages/Map.vue";
 import SwiperPage from "../pages/SwiperPage.vue";
 import ToastPage from "../pages/ToastPage.vue";
+import InputDate from "../pages/InputDate.vue";
 
 const routes = [
     {
@@ -25,8 +26,12 @@ const routes = [
             },
             {
                 path: 'swiper', component: SwiperPage
-            },{
+            },
+            {
                 path: 'toast', component: ToastPage
+            },
+            {
+                path: 'inpput-date', component: InputDate
             }
         ]
     }
