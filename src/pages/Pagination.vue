@@ -23,8 +23,12 @@ import axios from "axios";
     const pathname = window.location.pathname;
 
     const fetchData = async () => {
-        const res = await axios.get(`${process.env.VUE_APP_API_URL}/page?currentPage=${page.value}`);
-        data.value = res.data;
+        try {
+            const res = await axios.get(`${process.env.VUE_APP_API_URL}/page?currentPage=${page.value}`);
+            data.value = res.data;
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     onMounted(() => {
@@ -44,19 +48,19 @@ import axios from "axios";
     });
 
     const handlePage = (currentPage, type) => {
-        if ( data.paging?.firstPage === 1 && type === 'first' ) {
+        if ( data.value.paging?.firstPage === 1 && type === 'first' ) {
             return false;
         }
 
-        if ( data.paging?.firstPage === 1 && type === 'prev') {
+        if ( data.value.paging?.firstPage === 1 && type === 'prev') {
             return false;
         }
 
-        if ( data.paging?.lastPage === data.paging?.totalPage && type === 'next' ) {
+        if ( data.value.paging?.lastPage === data.value.paging?.totalPage && type === 'next' ) {
             return false;
         }
 
-        if ( data.paging?.lastPage === data.paging?.totalPage && type === 'last' ) {
+        if ( data.value.paging?.lastPage === data.value.paging?.totalPage && type === 'last' ) {
             return false;
         }
 
