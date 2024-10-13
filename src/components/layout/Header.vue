@@ -8,6 +8,7 @@
         <router-link to="/swiper">Swiper</router-link>
         <router-link to="/toast">Toast</router-link>
         <router-link to="/inpput-date">Input Date</router-link>
+        <router-link to="/datepicker">DatePciker</router-link>
     </nav>
 </template>
 

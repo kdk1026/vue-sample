@@ -7,6 +7,7 @@ import Map from "../pages/Map.vue";
 import SwiperPage from "../pages/SwiperPage.vue";
 import ToastPage from "../pages/ToastPage.vue";
 import InputDate from "../pages/InputDate.vue";
+import VueDatePicker from "../pages/VueDatePicker.vue";
 
 const routes = [
     {
@@ -32,6 +33,9 @@ const routes = [
             },
             {
                 path: 'inpput-date', component: InputDate
+            },
+            {
+                path: 'datepicker', component: VueDatePicker
             }
         ]
     }
