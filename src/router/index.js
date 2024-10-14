@@ -8,6 +8,9 @@ import SwiperPage from "../pages/SwiperPage.vue";
 import ToastPage from "../pages/ToastPage.vue";
 import InputDate from "../pages/InputDate.vue";
 import VueDatePicker from "../pages/VueDatePicker.vue";
+import EmptyPage from "../pages/EmptyPage.vue";
+import SocialLogin from "../pages/SocialLogin.vue";
+import NaverLoginCallback from "../pages/NaverLoginCallback.vue";
 
 const title = process.env.VUE_APP_TITLE;
 
@@ -46,9 +49,17 @@ const routes = [
             {
                 path: 'datepicker', component: VueDatePicker,
                 meta: { title: `${title} | DatePicker` }
-            }
-        ]
-    }
+            },
+            {
+                path: 'social-login', component: SocialLogin,
+                meta: { title: `${title} | 소셜 로그인` }
+            },
+        ],
+    },
+    {
+        path: '/naver-login-callback', component: NaverLoginCallback
+    },
+    { path: '/:pathMatch(.*)*', component: EmptyPage }
 ];
 
 const router = createRouter({

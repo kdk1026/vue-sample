@@ -9,6 +9,7 @@
         <router-link to="/toast">Toast</router-link>
         <router-link to="/inpput-date">Input Date</router-link>
         <router-link to="/datepicker">DatePciker</router-link>
+        <router-link to="/social-login">소셜 로그인</router-link>
     </nav>
 </template>
 
