@@ -6,10 +6,14 @@
 
 <script setup>
 import { loginWithNaverCallBack } from "@/utils/socialLogin";
-import { onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
-onMounted(() => {
-    const naverLogin = loginWithNaverCallBack(process.env.REACT_APP_NAVER_CLIENT_ID, `${process.env.REACT_APP_FRONT_URL}/naver-login-callback`);
+const naverClientId = process.env.REACT_APP_NAVER_CLIENT_ID;
+const naverCallbackUrl = `${process.env.REACT_APP_FRONT_URL}/naver-login-callback`;
+const naverLoginCallBack = ref(null);
+
+naverLoginCallBack.value = () => {
+    const naverLogin = loginWithNaverCallBack(naverClientId, naverCallbackUrl);
 
     window.addEventListener('load', function () {
         naverLogin.getLoginStatus(function (status) {
@@ -27,6 +31,10 @@ onMounted(() => {
             }
         });
     });
+};
+
+onMounted(() => {
+    naverLoginCallBack.value();
 });
 </script>
 
