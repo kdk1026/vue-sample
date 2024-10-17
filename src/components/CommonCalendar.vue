@@ -91,7 +91,7 @@ import { Today, Convert, CalcDate } from "../utils/date";
     });
 
     const prevMonth = (() => {
-        if ( selectedMonth === 1 ) {
+        if ( selectedMonth.value === 1 ) {
             selectedMonth.value = 12;
             selectedYear.value = selectedYear.value - 1;
         } else {
@@ -105,7 +105,7 @@ import { Today, Convert, CalcDate } from "../utils/date";
     });
 
     const nextMonth = (() => {
-        if ( selectedMonth === 1 ) {
+        if ( selectedMonth.value === 1 ) {
             selectedMonth.value = 1;
             selectedYear.value = selectedYear.value + 1;
         } else {

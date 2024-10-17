@@ -12,11 +12,11 @@
 </template>
 
 <script setup>
-    const props = defineProps({
-        imageData: String,
-        handleListen: Function,
-        handleRefresh: Function
-    });
+const props = defineProps({
+    imageData: String,
+    handleListen: Function,
+    handleRefresh: Function
+});
 </script>
 
 <style scoped>

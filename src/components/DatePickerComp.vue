@@ -50,4 +50,5 @@ watch(() => props.defaultDate, (newDate) => {
 </script>
 
 <style lang="scss" scoped>
+
 </style>

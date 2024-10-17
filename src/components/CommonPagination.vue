@@ -11,20 +11,18 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+const props = defineProps({
+    data: Object,
+    handlePage: Function
+});
 
-    const props = defineProps({
-        data: Object,
-        handlePage: Function
-    });
-
-    const handleClickPage = (page) => {
-        if ( page === props.data.paging?.currentPage ) {
-            return false;
-        } else {
-            props.handlePage(page);
-        }
-    };
+const handleClickPage = (page) => {
+    if ( page === props.data.paging?.currentPage ) {
+        return false;
+    } else {
+        props.handlePage(page);
+    }
+};
 </script>
 
 <style scoped>
