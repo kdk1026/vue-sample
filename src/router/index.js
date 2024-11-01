@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import MainLayout from "../components/layout/MianLayout.vue";
 import Main from "../pages/Main.vue";
 import Captcha from "../pages/Captcha.vue";
 import Pagination from "../pages/Pagination.vue";
@@ -16,8 +17,11 @@ const title = process.env.VUE_APP_TITLE;
 
 const routes = [
     {
-        path: '/', component: Main,
+        path: '/', component: MainLayout,
         children: [
+            {
+                path: '', component: Main
+            },
             {
                 path: 'captcha', component: Captcha,
                 meta: { title: `${title} | Captcha` }
