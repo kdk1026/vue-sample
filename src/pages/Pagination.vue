@@ -11,31 +11,30 @@
 import { onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import CommonPagination from "../components/CommonPagination.vue";
-import axios from "axios";
+import { useApi } from "@/composition/useApi";
+import { fetchPageData } from "@/apis/test";
 
     const route = useRoute();
     const params = route.query;
 
-    const page = ref(params.page);
+    const page = ref(params.page||'1');
     const data = ref([]);
 
     const router = useRouter();
     const pathname = window.location.pathname;
 
-    const fetchData = async () => {
-        try {
-            const res = await axios.get(`${process.env.VUE_APP_API_URL}/page?currentPage=${page.value}`);
-            data.value = res.data;
-        } catch (error) {
-            console.error(error);
-        }
-    };
+    const { apiData: pageData, callApi: fetchPageDataApi } = useApi(fetchPageData, [page.value], false);
 
     onMounted(() => {
-        if ( !page.value ) {
-            page.value = '1';
-        }
-        fetchData();
+        fetchPageDataApi();
+    });
+
+    watch(page, (newPage) => {
+        fetchPageDataApi([newPage]);
+    });
+
+    watch(pageData, (newPageData) => {
+        data.value = newPageData;
     });
 
     watch(page, () => {
