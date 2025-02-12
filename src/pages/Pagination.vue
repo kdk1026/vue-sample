@@ -11,7 +11,7 @@
 import { onMounted, ref, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import CommonPagination from "../components/CommonPagination.vue";
-import { useApi } from "@/composition/useApi";
+import { useApi } from "@/compositions/useApi";
 import { fetchPageData } from "@/apis/test";
 
     const route = useRoute();
