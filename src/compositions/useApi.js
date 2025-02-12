@@ -16,8 +16,8 @@ export function useApi(apiFunction, initialParams = [], callOnInit = true) {
             if ( JSON.stringify(params) === JSON.stringify(prevParams.value) ) {
                 return;
             }
+            prevParams.value = params;
         }
-        prevParams.value = params;
 
         try {
             const res = await apiFunction(...params);
