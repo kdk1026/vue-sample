@@ -1,5 +1,5 @@
 <template>
-    <nav className="menu">
+    <nav class="menu">
         <ul>
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/captcha">Captcha</router-link></li>
