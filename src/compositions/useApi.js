@@ -36,11 +36,11 @@ export function useApi(apiFunction, initialParams = [], callOnInit = true) {
 
             return res.data;
         } catch (error) {
-            if (error.status === 999) {
+            if ( error.status === 999 ) {
                 router.push("/error-network");
             }
+
             console.log(error);
-            throw error;
         }
     };
 

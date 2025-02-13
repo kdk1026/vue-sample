@@ -12,6 +12,7 @@ import VueDatePicker from "../pages/VueDatePicker.vue";
 import EmptyPage from "../pages/EmptyPage.vue";
 import SocialLogin from "../pages/SocialLogin.vue";
 import NaverLoginCallback from "../pages/NaverLoginCallback.vue";
+import NetworkErrorPage from "../pages/NetworkErrorPage.vue";
 
 const title = process.env.VUE_APP_TITLE;
 
@@ -63,6 +64,7 @@ const routes = [
     {
         path: '/naver-login-callback', component: NaverLoginCallback
     },
+    { path: '/error-network', component: NetworkErrorPage },
     { path: '/:pathMatch(.*)*', component: EmptyPage }
 ];
 
