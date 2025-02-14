@@ -13,6 +13,8 @@ import EmptyPage from "../pages/EmptyPage.vue";
 import SocialLogin from "../pages/SocialLogin.vue";
 import NaverLoginCallback from "../pages/NaverLoginCallback.vue";
 import NetworkErrorPage from "../pages/NetworkErrorPage.vue";
+import TestLayout from "../components/layout/TestLayout.vue";
+import HelloPage from "../pages/test/HelloPage.vue";
 
 const title = process.env.VUE_APP_TITLE;
 
@@ -60,6 +62,14 @@ const routes = [
                 meta: { title: `${title} | 소셜 로그인` }
             },
         ],
+    },
+    {
+        path: '/test', component: TestLayout,
+        children: [
+            {
+                path: '', component: HelloPage
+            },
+        ]
     },
     {
         path: '/naver-login-callback', component: NaverLoginCallback
