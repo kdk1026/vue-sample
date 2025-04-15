@@ -22,19 +22,21 @@ export function useApi(apiFunction, initialParams = [], callOnInit = true) {
         try {
             const res = await apiFunction(...params);
 
-            if ( res.data.list ) {
-                apiData.value = res.data.list;
-            } else if ( res.data.data ) {
-                apiData.value = res.data.data;
-            } else {
-                apiData.value = res.data;
+            if ( res && res.data ) {
+                if ( res.data.list ) {
+                    apiData.value = res.data.list;
+                } else if ( res.data.data ) {
+                    apiData.value = res.data.data;
+                } else {
+                    apiData.value = res.data;
+                }
+    
+                if ( res.data.paging ) {
+                    apiPaging.value = res.data.paging;
+                }
             }
 
-            if ( res.data.paging ) {
-                apiPaging.value = res.data.paging;
-            }
-
-            return res.data;
+            return res ? res.data : nul;
         } catch (error) {
             if ( error.status === 999 ) {
                 router.push("/error-network");
